@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<txg:Texgit xmlns:txg="http://jrimum.org/texgit"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://gilmatryx.googlepages.com/Texgit http://jrimum.org/texgit"
+	version="1.0-academic">
+
+	<FlatFile>
+		<layout>
+			<name>ArquivoRetornoBB_CNAB400</name>
+			<description>
+				Layout para Cobrança.
+
+				Arquivo texto - padrão CNAB
+				Meio de Registro Transmissão de Dados 
+				Descrição de Registro - Tamanho 400 Bytes
+				Organização Sequencial
+
+				ARQUIVO FORMATO CNAB RETORNO, REGISTROS
+			</description>
+		</layout>
+		<GroupOfRecords>
+			<Record name="Header" description="Protocolo de comunicação">
+				<GroupOfFields>
+					<IdType name="IdentificacaoRegistro" value="0" length="1" position="1" />
+					<Field name="TipoOperacao" length="1" type="INTEGER"  padding="ZERO_LEFT" />
+					<Field name="IdentificacaoTipoOperacao" length="7" />
+					<Field name="IdentificacaoTipoServico" length="2" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="IdentificacaoExtensoTipoServico" length="8" />
+					<Field name="ComplementoRegistro" length="7" />
+					<Field name="PrefixoAgencia" length="4" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DigitoVerificadorAgencia" length="1" />
+					<Field name="NumeroContaCorrente" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DigitoVerificadorContaCorrente" length="1" />
+					<Field name="zeros" length="6" />
+					<Field name="NomeCedente" length="30" />
+					<Field name="BB" length="18" />
+					<Field name="DataGravacao" length="6" type="DATE" format="DATE_DDMMYY" />
+					<Field name="SequencialRetorno" length="7" type="INTEGER" />
+					<Field name="Filler" length="42" />
+					<Field name="NumeroConvencio" length="7" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="238" />
+					<Field name="SequencialRegistro" length="6" type="INTEGER" padding="ZERO_LEFT" />
+				</GroupOfFields>
+			</Record>
+			<Record name="TransacaoTitulo" repeatable="true">
+				<GroupOfFields>
+					<IdType name="IdentiFicacaoRegistroDetalhe" value="7" length="1" position="1" />
+					<Field name="Zeros" length="2" />
+					<Field name="Zeros" length="14" />
+					<Field name="PrefixoAgencia" length="4" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DigitoVerificadorAgencia" length="1" />
+					<Field name="NumeroContaCorrenteCedente" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DigitoVerificadorContaCorrente" length="1" />
+					<Field name="NumeroConvenioCobrancaCedente" length="7" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="NumeroControleParticipante" length="25" />
+					<Field name="NossoNumero" length="17" padding="ZERO_LEFT" />
+					<Field name="TipoCobranca" length="1" type="INTEGER" padding="ZERO_LEFT"/>
+					<Field name="TipoCobrancaEspecifico" length="1" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DiasParaCalculo" length="4" type="INTEGER" padding="ZERO_LEFT"/>
+					<Field name="NaturezaRecebimento" length="2" type="INTEGER" padding="ZERO_LEFT"/>
+					<Field name="PrefixoTitulo" length="3" />
+					<Field name="VariacaoCarteira" length="3" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="ContaCaucao" length="1" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="TaxaParaDesconto" length="5" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="TaxaIOF" length="5" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="1" />
+					<Field name="CarteiraCobranca" length="2" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Comando" length="2" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DataLiquidacao" length="6" type="DATE" format="DATE_DDMMYY" />
+					<Field name="NumeroTituloDadoPeloCedente" length="10" />
+					<Field name="Filler" length="20" />
+					<Field name="DataVencimento" length="6" type="DATE" format="DATE_DDMMYY" />
+					<Field name="ValorTitulo" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="CodigoDoBancoRecebedor" length="3" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="PrefixoAgenciaRecebedora" length="4" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DigitoVerificadorPrefixoAgenciaRecebedora" length="1" />
+					<Field name="EspecieTitulo" length="2" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="DataCredito" length="6" type="DATE" format="DATE_DDMMYY" />
+					<Field name="ValorTarifa" length="7" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="OutrasDespesas" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="JurosDesconto" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="IOFDesconto" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="ValorAbatimento" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="DescontoConcedido" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="ValorRecebido" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="JurosDeMora" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="OutrosRecebimentos" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="AbatimentoNaoAproveitadoPeloSacado" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="ValorLancamento" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="IndicativoDeDebitoCredito" length="1" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="IndicadorDeValor" length="1" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="ValorDoAjuste" length="12" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="Zero" length="1" padding="ZERO_LEFT"/>
+					<Field name="Filler" length="9" />
+					<Field name="Zeros" length="7"  padding="ZERO_LEFT" />
+					<Field name="Zeros" length="9"  padding="ZERO_LEFT" />
+					<Field name="Zeros" length="7"  padding="ZERO_LEFT" />
+					<Field name="Zeros" length="9"  padding="ZERO_LEFT" />
+					<Field name="Zeros" length="7"  padding="ZERO_LEFT" />
+					<Field name="Zeros" length="9"  padding="ZERO_LEFT" />
+					<Field name="IndicativoDeAutorizacaoLiquidacaoParcial" length="1" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="1" />
+					<Field name="CanalDePagementoDoTituloUtilizadoPeloSacado" length="2" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="SequencialRegistro" length="6" type="INTEGER" padding="ZERO_LEFT" />
+				</GroupOfFields>
+			</Record>
+			<Record name="Trailler">
+				<GroupOfFields>
+					<IdType name="IdentiFicacaoRegistroTrailer" value="9" length="1" position="1" />
+					<Field name="ValorFixoTrailer1" value="2" length="1"  padding="ZERO_LEFT"/>
+					<Field name="ValorFixoTrailer2" value="01" length="2"  padding="ZERO_LEFT" />
+					<Field name="ValorFixoTrailer3" value="001" length="3"  padding="ZERO_LEFT" />
+					<Field name="Filler" length="10" />
+					<Field name="CobrancaSimplesQuantidadeTitulos" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="CobrancaSimplesValorTotal" length="14" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="CobrancaSimplesNumeroDoAviso" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="10" />
+					<Field name="CobrancaVinculadaQuantidadeTitulos" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="CobrancaVinculadaValorTotal" length="14" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="CobrancaVinculadaNumeroDoAviso" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="10" />
+					<Field name="CobrancaCaucionadaQuantidadeTitulos" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="CobrancaCaucionadaValorTotal" length="14" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="CobrancaCaucionadaNumeroDoAviso" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="10" />
+					<Field name="CobrancaDescontadaQuantidadeTitulos" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="CobrancaDescontadaValorTotal" length="14" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="CobrancaDescontadaNumeroDoAviso" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="50" />
+					<Field name="CobrancaVendorQuantidadeTitulos" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="CobrancaVendorValorTotal" length="14" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
+					<Field name="CobrancaVendorNumeroDoAviso" length="8" type="INTEGER" padding="ZERO_LEFT" />
+					<Field name="Filler" length="147" />
+					<Field name="SequencialDoRegistro"  length="6" type="INTEGER" padding="ZERO_LEFT" />
+				</GroupOfFields>
+			</Record>
+		</GroupOfRecords>
+	</FlatFile>
+
+</txg:Texgit>
