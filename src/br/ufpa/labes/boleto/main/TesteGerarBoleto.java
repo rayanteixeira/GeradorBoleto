@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
+import javax.rmi.CORBA.Util;
 
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.bopepo.Boleto;
@@ -22,43 +25,49 @@ import org.jrimum.domkee.financeiro.banco.febraban.TipoDeTitulo;
 import org.jrimum.domkee.financeiro.banco.febraban.Titulo.Aceite;
 
 public class TesteGerarBoleto {
+	private static int convenio = 2866935 ;
+	private static String nDocumento = "0000000003";
 
 	public static void main(String[] args) {
 		// Cedente
-		Cedente cedente = new Cedente("FADESP - Fundação de Amparo e Desenvolvimento da Pesquisa", "10.687.566/0001-97");
+		Cedente cedente = new Cedente("FADESP - Fundação de Amparo e Desenvolvimento da Pesquisa", "05.572.870/0001-59");
 		
 		// Sacado
-		Sacado sacado = new Sacado("Rayan Teixeira", "00864683243");
+		Sacado sacado = new Sacado("FRANCISCO DEMARIM DE AGUIAR JUNIOR", "00299967247");
 		
 		// Endereï¿½o do sacado
 		Endereco endereco = new Endereco();
 		endereco.setUF(UnidadeFederativa.PA);
-		endereco.setLocalidade("Ananindeua");
-		endereco.setCep(new CEP("66645-000"));
-		endereco.setBairro("AGUAS LINDAs");
-		endereco.setLogradouro("BR 316 - KM 05");
-		endereco.setNumero("1010");
+		endereco.setLocalidade("Belém");
+		endereco.setCep(new CEP("66075-110"));
+		endereco.setBairro("Guamá");
+		endereco.setLogradouro("Rua Augusto Corrêa, Lab. de Engenharia de Software(LABES)");
+		endereco.setNumero("1");
 		
 		sacado.addEndereco(endereco);
 		
 		// Criando o tï¿½tulo
 		ContaBancaria contaBancaria = new ContaBancaria(BancosSuportados.BANCO_DO_BRASIL.create());
 		contaBancaria.setAgencia(new Agencia(1674, "8"));
-		contaBancaria.setNumeroDaConta(new NumeroDaConta(2941653));
-		//contaBancaria.setNumeroDaConta(new NumeroDaConta(101739, "X"));
+		contaBancaria.setNumeroDaConta(new NumeroDaConta(convenio));
+		//contaBancaria.setNumeroDaConta(new NumeroDaConta(333006, "0"));
 		//contaBancaria.setCarteira(new Carteira(17, TipoDeCobranca.COM_REGISTRO));
 		contaBancaria.setCarteira(new Carteira(17));
 		
 		org.jrimum.domkee.financeiro.banco.febraban.Titulo titulo = new org.jrimum.domkee.financeiro.banco.febraban.Titulo(contaBancaria, sacado, cedente);
-		titulo.setNumeroDoDocumento("0000000066");
-		titulo.setNossoNumero("28588450000000066");
-		titulo.setDigitoDoNossoNumero("7");
+		titulo.setNumeroDoDocumento(nDocumento);
+		//titulo.setNumeroDoDocumento("0000000066");
 		
-		titulo.setValor(BigDecimal.valueOf(100.00));
+		titulo.setNossoNumero(convenio+nDocumento);
+		//titulo.setDigitoDoNossoNumero("7");
+		
+		titulo.setValor(BigDecimal.valueOf(1.00));
 		titulo.setDataDoDocumento(new Date());
 		
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(2017, 12, 27);
+		calendar.set(2017, 12, 18);
+				
+		//Date vencimento = new GregorianCalendar(2017,08, 17).getTime();
 		titulo.setDataDoVencimento(calendar.getTime());
 		
 		titulo.setTipoDeDocumento(TipoDeTitulo.DS_DUPLICATA_DE_SERVICO);
@@ -67,11 +76,19 @@ public class TesteGerarBoleto {
 		
 		// Dados do boleto
 		Boleto boleto = new Boleto(titulo);
+		
+		/* cria uma informação fake para o usuário, pois  foi necessáio o nº convênio em contaBancaria.setNumeroDaConta para 
+		*  poder mostrar agencia e conta para o usuário
+		*/
+		boleto.addTextosExtras("txtFcAgenciaCodigoCedente", "1674-8/101.912-0"); 
+		boleto.addTextosExtras("txtRsAgenciaCodigoCedente", "1674-8/101.912-0"); 
 		boleto.setLocalPagamento("Pagar preferencialmente no Banco do Brasil");
 		boleto.setInstrucaoAoSacado("Evite multas, pague em dias suas contas.");
 		
-		boleto.setInstrucao1("Após o vencimento, aplicar multa de 2,00% e juros de 1,00% ao mês");
-		
+		boleto.setInstrucao1("NÃO ACEITAR PAGAMENTO EM CHEQUE");
+		boleto.setInstrucao3("EM CASO DE ATRASO COBRAR MULTA DE 2%, MAIS JUROS DE 1% AO MÊS");
+		boleto.setInstrucao4("PROJETO: 3426 | SUBPROJETO: 10 - CURSOS LIVRES-CLLE/UFPA - 1º NÍVEL ");
+		 
 		BoletoViewer boletoViewer = new BoletoViewer(boleto);
 		
 		File arquivoPdf = boletoViewer.getPdfAsFile("resource/boletoBB.pdf");

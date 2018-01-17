@@ -27,13 +27,13 @@ version="1.0-academic">
                     <Field name="DigitoVerificadorAgencia" length="1"/>    
                     <Field name="NumeroContaCorrente" length="8" padding="ZERO_LEFT" />    
                     <Field name="DigitoVerificadorContaCorrente" length="1" />    
-                    <Field name="Filler" length="6" />    
+                    <Field name="Filler" length="6" padding="ZERO_LEFT" />    
                     <Field name="NomeCedente" length="30" />    
                     <Field name="BB" length="18" />  
                     <Field name="DataGravacao" length="6" type="DATE" format="DATE_DDMMYY" />                        
-                    <Field name="SequencialRemessa" length="7" />                      
+                    <Field name="SequencialRemessa" length="7" padding="ZERO_LEFT"/>                      
                     <Field name="Filler" length="22" />                          
-                    <Field name="NumeroConvencioLider" length="7" padding="ZERO_LEFT" />  
+                    <Field name="NumeroConvenioLider" length="7" padding="ZERO_LEFT" />  
                     <Field name="Filler" length="258" />
                     <Field name="SequencialRegistro" length="6" padding="ZERO_LEFT"/>  
                             
@@ -81,7 +81,7 @@ version="1.0-academic">
                     <Field name="TipoInscricaoSacado" length="2" padding="ZERO_LEFT" />  
                     <Field name="NumeroCnpjCpfSacado" length="14" padding="ZERO_LEFT" />  
                     <Field name="NomeSacado" length="37" />  
-                    <Field name="Complemento" length="3" />  
+                    <Field name="ComplementoRegistro" length="3" />  
                     <Field name="EnderecoSacado" length="40" />  
                     <Field name="BairroSacado" length="12" />  
                     <Field name="CepEnderecoSacado" length="8" padding="ZERO_LEFT" />  
