@@ -17,7 +17,7 @@ public class ExemploRetorno {
 
 	public static void main(String[] args) throws IOException {
 		
-		File fileExemplo = new File("resource/arquivoRetorno/CBR6436462012201712213.RET");
+		File fileExemplo = new File("resource/arquivoRetorno/CBR6436462012201712213.ret");
 		List<String> lines = FileUtils.readLines(fileExemplo, "UTF-8");
 		ArquivoRetorno ff = ArquivoRetorno.newInstance(lines);
 		
@@ -62,9 +62,9 @@ public class ExemploRetorno {
 		}
 		
 		System.out.println("###################################################################");
-		System.out.println("\t\t Cobrança Simples - quantidade de Título: " + s.getCobrancaSimplesQuantidadeTitulos());
-		System.out.println("\t\t Cobrança Simples - valor total: " + s.getCobrancaSimplesValorTotal());
-		System.out.println("\t\t Total de linhas lidas: "+ s.getCarteiraCobranca());
+//		System.out.println("\t\t Cobrança Simples - quantidade de Título: " + s.getCobrancaSimplesQuantidadeTitulos());
+//		System.out.println("\t\t Cobrança Simples - valor total: " + s.getCobrancaSimplesValorTotal());
+		System.out.println("\t\t Total de linhas lidas: "+ s.getCobrancaSimplesValorTotal());
 		System.out.println("\t\t Total de Título neste arquivo: "+ count);
 		System.out.println("##################################################################");
 		

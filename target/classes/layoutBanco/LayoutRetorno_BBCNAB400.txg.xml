@@ -74,7 +74,7 @@
 					<Field name="CodigoDoBancoRecebedor" length="3" type="INTEGER" padding="ZERO_LEFT" />
 					<Field name="PrefixoAgenciaRecebedora" length="4" type="INTEGER" padding="ZERO_LEFT" />
 					<Field name="DigitoVerificadorPrefixoAgenciaRecebedora" length="1" />
-					<Field name="EspecieTitulo" length="2" type="INTEGER" padding="ZERO_LEFT" />
+<!--Tirei o interger -->					<Field name="EspecieTitulo" length="2"  padding="ZERO_LEFT" />
 					<Field name="DataCredito" length="6" type="DATE" format="DATE_DDMMYY" />
 					<Field name="ValorTarifa" length="7" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />
 					<Field name="OutrasDespesas" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />

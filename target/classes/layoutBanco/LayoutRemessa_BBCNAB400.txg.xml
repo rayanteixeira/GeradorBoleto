@@ -17,19 +17,19 @@ version="1.0-academic">
         <GroupOfRecords>    
             <Record name="Header" description="Protocolo de comunicação">    
                 <GroupOfFields>    
-                    <IdType name="IdentificacaoRegistro" length="1" position="1" />    
-                    <Field name="TipoOperacao" length="1" padding="ZERO_LEFT" />    
-                    <Field name="IdentificacaoExtensoTipoOperacao" length="7" />    
-                    <Field name="IdentificacaoTipoServico" length="2" padding="ZERO_LEFT" />    
-                    <Field name="IdentificacaoExtensoTipoServico" length="8" />    
-                    <Field name="ComplementoRegistro" length="7"  />    
+                    <IdType name="IdentificacaoRegistro" value="0" length="1" position="1" />    
+                    <Field name="TipoOperacao" value="1" length="1" padding="ZERO_LEFT" />    
+                    <Field name="IdentificacaoExtensoTipoOperacao" value="REMESSA" length="7" />    
+                    <Field name="IdentificacaoTipoServico" value="1" length="2" padding="ZERO_LEFT" />    
+                    <Field name="IdentificacaoExtensoTipoServico" value="COBRANCA" length="8" />    
+                    <Field name="ComplementoRegistro" length="7" />    
                     <Field name="PrefixoAgencia" length="4"  padding="ZERO_LEFT" />    
                     <Field name="DigitoVerificadorAgencia" length="1"/>    
                     <Field name="NumeroContaCorrente" length="8" padding="ZERO_LEFT" />    
                     <Field name="DigitoVerificadorContaCorrente" length="1" />    
                     <Field name="Filler" length="6" padding="ZERO_LEFT" />    
                     <Field name="NomeCedente" length="30" />    
-                    <Field name="BB" length="18" />  
+                    <Field name="BB" value="001BANCODOBRASIL" length="18" />  
                     <Field name="DataGravacao" length="6" type="DATE" format="DATE_DDMMYY" />                        
                     <Field name="SequencialRemessa" length="7" padding="ZERO_LEFT"/>                      
                     <Field name="Filler" length="22" />                          
@@ -41,8 +41,8 @@ version="1.0-academic">
             </Record>    
             <Record name="TransacaoTitulo" repeatable="true" description="Registro de Transação - Tipo 1">    
                 <GroupOfFields>    
-                    <IdType name="IdentiFicacaoRegistroDetalhe" length="1" position="1" />    
-                    <Field name="TipoInscricaoCedente" length="2" padding="ZERO_LEFT" />    
+                    <IdType name="IdentiFicacaoRegistroDetalhe" value="7" length="1" position="1" />    
+                    <Field name="TipoInscricaoCedente" value="02" length="2" padding="ZERO_LEFT" />    
                     <Field name="NumeroCpfCnpjCedente" length="14" padding="ZERO_LEFT"/>    
                     <Field name="PrefixoAgencia" length="4" padding="ZERO_LEFT" />    
                     <Field name="DigitoVerificadorAgencia" length="1" />    
@@ -51,22 +51,22 @@ version="1.0-academic">
                     <Field name="NumeroCovenioCobrancaCedente" length="7" padding="ZERO_LEFT" />    
                     <Field name="CodigoControleEmpresa" length="25"/>                      
                     <Field name="NossoNumero" length="17" padding="ZERO_LEFT" />                        
-                    <Field name="NumeroPrestacao" length="2" padding="ZERO_LEFT" />                        
-                    <Field name="GrupoValor" length="2" padding="ZERO_LEFT"/>    
+                    <Field name="NumeroPrestacao" value="00" length="2" padding="ZERO_LEFT" />                        
+                    <Field name="GrupoValor" value="00" length="2" padding="ZERO_LEFT"/>    
                     <Field name="Filler" length="3" />    
                     <Field name="IndicativoMensagemSacador" length="1" />  
                     <Field name="PrefixoTitulo" length="3" />    
                     <Field name="VariacaoCarteira" length="3" padding="ZERO_LEFT" />    
-                    <Field name="ContaCaucao" length="1" padding="ZERO_LEFT" />    
-                    <Field name="NumeroBordero" length="6" padding="ZERO_LEFT" />  
+                    <Field name="ContaCaucao" value="0" length="1" padding="ZERO_LEFT" />    
+                    <Field name="NumeroBordero" value="000000" length="6" padding="ZERO_LEFT" />  
                     <Field name="TipoCobranca" length="5"/>  
                     <Field name="CarteiraCobranca" length="2" padding="ZERO_LEFT" />  
                     <Field name="Comando" length="2" padding="ZERO_LEFT" />  
                     <Field name="NumeroTituloAtribuidoCedente" length="10" />  
                     <Field name="DataVencimento" length="6" type="DATE" format="DATE_DDMMYY" />    
                     <Field name="ValorTitulo" length="13" type="BIGDECIMAL" format="DECIMAL_DD" padding="ZERO_LEFT" />    
-                    <Field name="NumeroBanco" length="3" padding="ZERO_LEFT" />  
-                    <Field name="PrefixoAgenciaCobradora" length="4" padding="ZERO_LEFT" />  
+                    <Field name="NumeroBanco" value="001" length="3" padding="ZERO_LEFT" />  
+                    <Field name="PrefixoAgenciaCobradora" value="0000" length="4" padding="ZERO_LEFT" />  
                     <Field name="DigitoVerificadorPrefixoAgenciaCobradora" length="1" />    
                     <Field name="EspecieTitulo" length="2" padding="ZERO_LEFT" />  
                     <Field name="AceiteTitulo" length="1" />  
